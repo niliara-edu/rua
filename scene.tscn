@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dj10noebfruwr"]
+[gd_scene load_steps=3 format=3 uid="uid://dj10noebfruwr"]
 
 [ext_resource type="Texture2D" uid="uid://bowpttnsl1ghn" path="res://exp/c.png" id="1_i7qgt"]
+[ext_resource type="PackedScene" uid="uid://cj0p10d1bmaq7" path="res://tscn/card.tscn" id="2_7hd0g"]
 
 [node name="Scene" type="Node2D"]
 
@@ -10,3 +11,8 @@
 texture = ExtResource("1_i7qgt")
 
 [node name="Camera2D" type="Camera2D" parent="board"]
+zoom = Vector2(1.5, 1.5)
+
+[node name="Cards" type="Node2D" parent="."]
+
+[node name="Card" parent="Cards" instance=ExtResource("2_7hd0g")]
