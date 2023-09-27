@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj0p10d1bmaq7"]
+[gd_scene load_steps=4 format=3 uid="uid://cj0p10d1bmaq7"]
 
 [ext_resource type="Script" path="res://tscn/card.gd" id="1_tdfsl"]
 [ext_resource type="Texture2D" uid="uid://63tgnweckqsh" path="res://exp/1.png" id="2_jxcxd"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i682y"]
+size = Vector2(50, 50)
+
 [node name="Card" type="Area2D"]
+monitoring = false
 script = ExtResource("1_tdfsl")
 
 [node name="Spr" type="Node2D" parent="."]
@@ -27,3 +31,19 @@ color = Color(0.635294, 0.635294, 0.635294, 1)
 [node name="Sprite2D" type="Sprite2D" parent="Spr"]
 scale = Vector2(0.98, 0.98)
 texture = ExtResource("2_jxcxd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i682y")
+
+[node name="det" type="Area2D" parent="."]
+monitorable = false
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false

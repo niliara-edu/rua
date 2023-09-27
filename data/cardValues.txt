@@ -1,2 +1,2 @@
-3, 2
-4, 3
+hp=3	att=2	rng=def	speed=2
+hp=2	att=2	rng=2	speed=def
