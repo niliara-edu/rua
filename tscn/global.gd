@@ -1,7 +1,7 @@
 extends Node
 
 var sprites = [null]
-var file = FileAccess.open("res://data/cardValues.txt", FileAccess.READ)
+var file = FileAccess.open("res://data/cData", FileAccess.READ)
 
 var c = [[ [],[],[] ],[ [],[],[] ]]
 
@@ -25,7 +25,7 @@ var cardVarT = [null]
 
 func _ready():
 	
-	for i in range(1,3):
+	for i in range(1,10):
 		cardVarT.append([])
 		sprites.append(load("res://exp/" + str(i) + ".png"))
 		var line : String = file.get_line()
