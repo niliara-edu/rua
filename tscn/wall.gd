@@ -6,6 +6,7 @@ var hp = 20
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	collision_layer = 1+side
+	Global.walls[1-side] = self
 
 func dmg(vdmg):
 	hp -= vdmg

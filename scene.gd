@@ -18,6 +18,9 @@ func _process(_delta):
 		cNew(1,0,t)
 
 func cNew(side, row, type):
+	if Global.b[row+1][side*4] != null:
+		print("pls stop")
+		return(false)
 	var cInstance = cLoad.instantiate()
 	cInstance.side = side
 	cInstance.type = randi_range(1,9)
@@ -26,7 +29,7 @@ func cNew(side, row, type):
 	else:
 		cInstance.dir = -1
 	
-	cInstance.soup = Vector2(4*side-2, row)
+	cInstance.soup = Vector2(4*side, row+1)
 	$Cards.add_child(cInstance)
 
 func cMove(side):

@@ -4,6 +4,10 @@ var sprites = [null]
 var file = FileAccess.open("res://data/cData", FileAccess.READ)
 
 var c = [[ [],[],[] ],[ [],[],[] ]]
+var b = [[null,null,null,null,null],
+[null,null,null,null,null],
+[null,null,null,null,null]]
+var walls = [null, null]
 
 signal done
 
@@ -24,6 +28,7 @@ const defaults = [1, 1, 1, 1]
 var cardVarT = [null]
 
 func _ready():
+	print(b)
 	
 	for i in range(1,10):
 		cardVarT.append([])
