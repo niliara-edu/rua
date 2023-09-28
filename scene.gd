@@ -20,7 +20,7 @@ func _process(_delta):
 func cNew(side, row, type):
 	var cInstance = cLoad.instantiate()
 	cInstance.side = side
-	cInstance.type = type
+	cInstance.type = randi_range(1,9)
 	if side == 0:
 		cInstance.dir = 1
 	else:

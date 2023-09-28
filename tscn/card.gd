@@ -14,6 +14,7 @@ var sb = Vector2(125,140)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("type=" + str(type))
 	collision_layer = 1 + side
 	$RayCast2D2.collision_mask = 1 + side
 	$det.collision_mask = 2 - side
