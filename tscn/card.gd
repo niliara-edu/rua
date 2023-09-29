@@ -43,51 +43,59 @@ func goSoup():
 
 func move():
 	for i in range(0,speed):
-		if Global.b[soup.y][soup.x+1*dir] == null:
+		if Global.b[soup.y][soup.x+1*dir] == null: #needs extra cond - no walls
 			gDel()
 			soup.x += 1*dir
 			gAdd()
 			goSoup()
 			if attack():
 				break
-		else:
-			break
-		
 
 func act():
+	print("rng is " + str(rng))
 	if not attack():
 		move()
 
 func attack():
 	for i in range(rng):
+		print(rng)
 		var xFound = soup.x+(1+i)*dir
 		if abs(xFound-2) >= 2:
 			Global.walls[side].dmg(att)
+			print(true)
+			return(true)
 		else:
 			var tar = Global.b[soup.y][xFound]
 			if tar != null and tar.side != side:
 				tar.dmg(att)
+				print(true)
 				return(true)
-			else:
-				return(false)
+	print(false)
+	return(false)
+			
 
 func dmg(vdmg):
 	hp -= vdmg
+	print(str(side) + " " + str(vdmg))
 	if hp <= 0:
 		var i = 0
+		var new_cs = []
 		for item in Global.c[side][soup.y]:
-			if item == self:
-				Global.c[side][soup.y+1].remove_at(i)
+			if item != self:
+				new_cs.append(item)
+#				Global.c[side][soup.y]
+#				Global.c[side][soup.y].erase(self)
+			Global.c[side][soup.y] = new_cs
 			i+=1
+		print("ded" + str(Global.c[side][soup.y]))
 		gDel()
+		print(Global.c[side][soup.y])
 		queue_free()
 
 func gAdd():
 	Global.b[soup.y][soup.x] = self
-	print(Global.b)
 
 func gDel():
 	Global.b[soup.y][soup.x] = null
-	print(Global.b)
 
 

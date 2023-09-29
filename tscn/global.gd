@@ -49,8 +49,10 @@ func mCards(side):
 		can = false
 		for i in range(0, 3):
 			var x = c[side][i].size()
+			print(c[side])
 			for r in range(0,x):
-				c[side][i][r].act()
+				if is_instance_valid(c[side][i][r]):
+					c[side][i][r].act()
 		can = true
 			#c[side][i][x-r-1].act()
 
