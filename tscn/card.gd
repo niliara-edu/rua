@@ -14,10 +14,6 @@ var sb = Vector2(125,140)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	
-	print("type=" + str(type))
-	
 	collision_layer = 1 + side
 	$det.collision_mask = 2 - side
 	
@@ -43,7 +39,7 @@ func goSoup():
 
 func move():
 	for i in range(0,speed):
-		if Global.b[soup.y][soup.x+1*dir] == null: #needs extra cond - no walls
+		if Global.b[soup.y][soup.x+1*dir] == null:
 			gDel()
 			soup.x += 1*dir
 			gAdd()
@@ -52,44 +48,34 @@ func move():
 				break
 
 func act():
-	print("rng is " + str(rng))
 	if not attack():
 		move()
 
 func attack():
 	for i in range(rng):
-		print(rng)
 		var xFound = soup.x+(1+i)*dir
 		if abs(xFound-2) >= 2:
 			Global.walls[side].dmg(att)
-			print(true)
 			return(true)
 		else:
 			var tar = Global.b[soup.y][xFound]
 			if tar != null and tar.side != side:
 				tar.dmg(att)
-				print(true)
 				return(true)
-	print(false)
 	return(false)
 			
 
 func dmg(vdmg):
 	hp -= vdmg
-	print(str(side) + " " + str(vdmg))
 	if hp <= 0:
 		var i = 0
 		var new_cs = []
 		for item in Global.c[side][soup.y]:
 			if item != self:
 				new_cs.append(item)
-#				Global.c[side][soup.y]
-#				Global.c[side][soup.y].erase(self)
 			Global.c[side][soup.y] = new_cs
 			i+=1
-		print("ded" + str(Global.c[side][soup.y]))
 		gDel()
-		print(Global.c[side][soup.y])
 		queue_free()
 
 func gAdd():

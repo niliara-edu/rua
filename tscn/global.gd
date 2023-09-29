@@ -28,8 +28,6 @@ const defaults = [1, 1, 1, 1]
 var cardVarT = [null]
 
 func _ready():
-	print(b)
-	
 	for i in range(1,10):
 		cardVarT.append([])
 		sprites.append(load("res://exp/" + str(i) + ".png"))
@@ -49,7 +47,6 @@ func mCards(side):
 		can = false
 		for i in range(0, 3):
 			var x = c[side][i].size()
-			print(c[side])
 			for r in range(0,x):
 				if is_instance_valid(c[side][i][r]):
 					c[side][i][r].act()

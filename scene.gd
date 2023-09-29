@@ -19,7 +19,6 @@ func _process(_delta):
 
 func cNew(side, row, type):
 	if Global.b[row+1][side*4] != null:
-		print("pls stop")
 		return(false)
 	var cInstance = cLoad.instantiate()
 	cInstance.side = side
