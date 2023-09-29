@@ -1,19 +1,22 @@
 extends Area2D
 
-var soup = Vector2.ZERO
 var tween
 var tar
 var blocked = false
 
+var soup : Vector2
+var sb = Vector2(125,140)
+
 var type: int
 var side: int
+var dir: int
+
+
 var imp
 var hp: int
 var att: int
 var rng: int
 var speed: int
-var dir: int
-var sb = Vector2(125,140)
 
 
 func _ready():
@@ -84,7 +87,6 @@ func move():
 	aMove()
 
 func goSoup():
-#	position = Vector2(soup.x-2, soup.y -1) * sb
 	return(Vector2(soup.x-2, soup.y -1) * sb)
 
 
