@@ -1,39 +1,29 @@
 extends Node
 
-var sprites = [null]
 var file = FileAccess.open("res://data/cData", FileAccess.READ)
 
-var c = [[ [],[],[] ],[ [],[],[] ]]
+var cardVarT = [null] # Card Variable Types (in order)
+var sprites = [null] # Sprite files
+
+const defaults = [1, 1, 1, 1] # Default Card Variables
+
+var c = [[ [],[],[] ],[ [],[],[] ]] # cards in order
 var b = [[null,null,null,null,null],
 [null,null,null,null,null],
-[null,null,null,null,null]]
-var walls = [null, null]
+[null,null,null,null,null]] # board matrix
+var walls = [null, null] #walls
 
-signal done
+#### temporary ####
+const currentCards = 9
 
-var can = true
-
-
-
-var cardVars = {
-	"hp" : 0,
-	"att" : 1,
-	"range" : 2,
-	"speed" : 3,
-}
-
-const defaults = [1, 1, 1, 1]
-
-
-var cardVarT = [null]
 
 func _ready():
-	for i in range(1,10):
+	for i in range(1,currentCards+1):
 		cardVarT.append([])
 		sprites.append(load("res://exp/" + str(i) + ".png"))
+		
 		var line : String = file.get_line()
 		var l = line.split("	")
-		
 		for x in l.size():
 			var res = (l[x].split("="))
 			if res.size() > 1 and res[1] != "def":
@@ -43,17 +33,13 @@ func _ready():
 
 
 func mCards(side):
-	if can:
-		can = false
-		for i in range(0, 3):
-			var x = c[side][i].size()
-			for r in range(0,x):
-				if is_instance_valid(c[side][i][r]):
-					c[side][i][r].act()
-		can = true
-			#c[side][i][x-r-1].act()
+	for i in range(0, 3):
+		var x = c[side][i].size()
+		for r in range(0,x):
+			if is_instance_valid(c[side][i][r]):
+				c[side][i][r].act()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(_delta):
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()

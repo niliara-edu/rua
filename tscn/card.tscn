@@ -34,16 +34,3 @@ texture = ExtResource("2_jxcxd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_i682y")
-
-[node name="det" type="Area2D" parent="."]
-monitorable = false
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 0)
-collide_with_areas = true
-collide_with_bodies = false
-
-[node name="RayCast2D2" type="RayCast2D" parent="."]
-target_position = Vector2(0, 0)
-collide_with_areas = true
-collide_with_bodies = false
