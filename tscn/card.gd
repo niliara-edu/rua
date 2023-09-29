@@ -66,12 +66,11 @@ func aAttack():
 	
 
 func tcomplete():
-	
 	if is_instance_valid(tar):
 		tar.anima()
 
 func anima():
-	if hp <= 0:
+	if hp <= 0 and not blocked:
 		tween = null
 		tween = create_tween().set_parallel(true).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 		blocked = true
@@ -81,6 +80,7 @@ func anima():
 		
 		tween.set_parallel(false)
 		tween.tween_callback(queue_free)
+	
 
 
 func act():
@@ -97,7 +97,9 @@ func attack():
 	for i in range(rng):
 		var xFound = soup.x+(1+i)*dir
 		if abs(xFound-2) >= 2:
-			tar = Global.walls[side].dmg(att)
+			tar = Global.walls[side]
+			if tar != null and tar.side != side:
+				tar.dmg(att)
 			return(true)
 		else:
 			tar = Global.b[soup.y][xFound]

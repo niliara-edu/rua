@@ -12,6 +12,9 @@ func dmg(vdmg):
 	hp -= vdmg
 	print("wall hp: "+str(hp))
 	if hp <= 0:
+		Global.walls[1-side]=null
 		queue_free()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
+func anima():
+	pass
