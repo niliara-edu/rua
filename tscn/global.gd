@@ -13,6 +13,8 @@ var b = [[null,null,null,null,null],
 [null,null,null,null,null]] # board matrix
 var walls = [null, null] #walls
 
+var deck = []
+
 #### temporary ####
 const currentCards = 9
 
@@ -30,6 +32,11 @@ func _ready():
 				cardVarT[i].append(int(res[1]))
 			else:
 				cardVarT[i].append(defaults[x])
+	
+	for i in range(1,currentCards+1):
+		deck.append(i)
+	deck.shuffle()
+	print(deck)
 
 
 func mCards(side):
