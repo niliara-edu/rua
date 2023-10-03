@@ -22,6 +22,7 @@ var speed: int
 func _ready():
 	Global.c[side][soup.y].append(self)
 	$Spr/Sprite2D.texture = Global.sprites[type]
+	$Spr/ColorRect.color = Global.teamCol[side]
 	gAdd()
 	
 	position=goSoup()
@@ -70,7 +71,6 @@ func dmg(vdmg):
 			if item != self:
 				new_cs.append(item)
 			Global.c[side][soup.y] = new_cs
-		print(Global.c)
 		gDel()
 
 
@@ -118,7 +118,11 @@ func anima():
 		
 		tween.set_parallel(false)
 		tween.tween_callback(queue_free)
-
+	
+	elif not blocked:
+		tween = create_tween().set_parallel(true).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		$Spr/Sprite2D.modulate.a = 0.6
+		tween.tween_property($Spr/Sprite2D, "modulate", Color(1,1,1,1),0.6)
 
 
 

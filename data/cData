@@ -8,4 +8,4 @@ hp=3	att=2	rng=def	speed=def
 hp=1	att=2	rng=def	speed=3
 hp=3	att=3	rng=3	speed=def
 hp=def	att=def	rng=def	speed=def
-buff archer hp, buff swordsman hp, buff viking att, buff kite dmg
+buff archer hp, buff viking hp, nerf cookie wizard hp

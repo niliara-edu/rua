@@ -37,7 +37,7 @@ func cNew(side, row, type):
 		return(false)
 	var cInstance = cLoad.instantiate()
 	cInstance.side = side
-	cInstance.type = randi_range(1,Global.currentCards)
+	cInstance.type = Global.draw()
 	cInstance.dir = 1 - side*2
 	
 	cInstance.soup = Vector2(4*side, row)

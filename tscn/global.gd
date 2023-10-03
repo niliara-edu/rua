@@ -5,6 +5,8 @@ var file = FileAccess.open("res://data/cData", FileAccess.READ)
 var cardVarT = [null] # Card Variable Types (in order)
 var sprites = [null] # Sprite files
 
+var teamCol = [Color(0,0.5,0),Color(0,0,0.5)]
+
 const defaults = [1, 1, 1, 1] # Default Card Variables
 
 var c = [[ [],[],[] ],[ [],[],[] ]] # cards in order
@@ -33,10 +35,8 @@ func _ready():
 			else:
 				cardVarT[i].append(defaults[x])
 	
-	for i in range(1,currentCards+1):
-		deck.append(i)
-	deck.shuffle()
-	print(deck)
+	fill()
+	
 
 
 func mCards(side):
@@ -45,6 +45,23 @@ func mCards(side):
 		for r in range(0,x):
 			if is_instance_valid(c[side][i][r]):
 				c[side][i][r].act()
+
+func fill():
+	for i in range(1,currentCards+1):
+		deck.append(i)
+	deck.shuffle()
+
+func draw():
+	var retVal = deck[0]
+	var nDeck = []
+	for i in range(1,deck.size()):
+		nDeck.append(deck[i])
+	deck = nDeck
+	if deck.size() == 0:
+		fill()
+	return(retVal)
+
+
 
 
 func _process(_delta):
